@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 calculate(onOperation);
                 break;
             case R.id.btn_floating_point:
-                //resultCalculating(view);
                 break;
         }
         isOperationClick = true;
@@ -169,55 +168,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void toPositiveOrNegative(View view){
-        textView.getText().toString();
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void resultCalculating(View view){
-        String str = textView.getText().toString();
-        if (!isEqualDoubleClick){
-            try {
-                secondFloat = Float.parseFloat(str);
-            } catch (NumberFormatException e1) {
-                try {
-                    second = parseInt(str);
-                } catch (NumberFormatException e2) {
-                    System.out.println("Строка не является числом.");
-                }
-            }
-        }else {
-            try {
-                firstFloat = Float.parseFloat(str);
-            } catch (NumberFormatException e1) {
-                try {
-                    first = parseInt(str);
-                } catch (NumberFormatException e2) {
-                    System.out.println("Строка не является числом.");
-                }
-            }
-        }
-        if (firstFloat != 0.0 && secondFloat != 0.0){
-            Float resultFloat = firstFloat + secondFloat;
-            isEqualDoubleClick = true;
-            textView.setText(resultFloat.toString());
-        }else {
-            int result = first + second;
-            isEqualDoubleClick = true;
-
-        }
-    }
-
-    public void additionMethod(View view){
-        String str = textView.getText().toString();
-        try {
-            firstFloat = Float.parseFloat(str);
-        } catch (NumberFormatException e1) {
-            try {
-                first = parseInt(str);
-            } catch (NumberFormatException e2) {
-                System.out.println("Строка не является числом.");
-            }
-        }
-    }
 }
