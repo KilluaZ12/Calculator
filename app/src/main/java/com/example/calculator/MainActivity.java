@@ -5,6 +5,7 @@ import static java.lang.Integer.parseInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private String onOperation = "";
     private Boolean isOperationClick;
     private Boolean isEqualDoubleClick;
+    public static String KEY = "key";
+    Button btnSentResult = findViewById(R.id.btn_enter);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +71,13 @@ public class MainActivity extends AppCompatActivity {
         }
         isOperationClick = false;
         isEqualDoubleClick = false;
+        btnSentResult.setVisibility(View.GONE);
     }
 
     @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     public void onOperationClick(View view) {
         Button button = findViewById(view.getId());
+        btnSentResult.setVisibility(View.GONE);
         switch (view.getId()){
             case R.id.btn_plus_minus:
                 int checkNum = parseInt(textView.getText().toString());
@@ -109,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_equal:
                 calculate(onOperation);
+                btnSentResult.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_floating_point:
                 break;
@@ -153,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void allClear(View view){
+        btnSentResult.setVisibility(View.GONE);
         textView.setText("0");
         first = 0;
         second = 0;
@@ -167,5 +174,11 @@ public class MainActivity extends AppCompatActivity {
             textView.append(buttonText);
         }
     }
+    public void secondActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra(KEY, textView.getText().toString());
+        startActivity(intent);
+    }
+
 
 }

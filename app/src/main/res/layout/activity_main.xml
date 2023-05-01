@@ -13,6 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_enter"
+            android:onClick="onNumberClick"
+            android:layout_gravity="center"
+            app:cornerRadius="30dp"
+            android:textSize="22sp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:visibility="invisible"
+            android:text="@string/number_button_enter"
+            />
+
+
         <TextView
             android:id="@+id/text_view"
             android:layout_width="wrap_content"
